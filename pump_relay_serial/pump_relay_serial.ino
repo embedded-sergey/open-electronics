@@ -1,8 +1,9 @@
 #define RELAY 5 // first, we have to include libraries (if we have)
 #define LED 13 // and define pins which are used for inputs/outputs
 
-const int FLUSH = 3;       // LED is on, flushing pump is on
-const int MEASUREMENT = 7; // LED is blinking, flushing pump is off
+// normally closed relay: no power - device is active
+const int FLUSH = 3;       // Relay is off, flushing pump is on
+const int MEASUREMENT = 7; // Relay is on, flushing pump is off
 
 int periodIndex = 1; // this is not constant as period will be incremented
 
@@ -14,7 +15,7 @@ void setup(){ // the setup loop is used for configurations, as the code runs jus
 }
 
 void loop(){
-   digitalWrite(RELAY, LOW); // set pin 3 OFF to turn off the relay, so pumps start working again.
+   digitalWrite(RELAY, HIGH); // set pin 3 ON to turn on the relay, so pumps start working again.
 
    for(int i = 0; i < FLUSH; i++){
          Serial.println((String)"F" + periodIndex + (",") + millis());
@@ -22,7 +23,7 @@ void loop(){
          delay(1000);
       }
 
-   digitalWrite(RELAY, HIGH); // set pin 3 ON to activate the relay,
+   digitalWrite(RELAY, LOW); // set pin 3 OFF to turn off the relay,
                               // so pumps stop working
 
    for(int i = 0; i < MEASUREMENT; i++){

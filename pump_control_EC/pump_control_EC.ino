@@ -76,13 +76,13 @@ void print_EC_data(void) {                            //this function will pars 
   Serial.print("EC: ");                                //we now print each value we parsed separately
   Serial.print(sensorstring.toFloat());                                 //this is the EC value
 
-  if (EC >= 1000.0) {                      //if the RTD temperature is greater than or equal to 25 C
-    digitalWrite(RELAY, LOW);
+  if (EC >= 1000) {                      //if the RTD temperature is greater than or equal to 25 C
+    digitalWrite(RELAY, HIGH);
     digitalWrite(LED, HIGH);          
     Serial.println((String)": Pump is ON, clean water is coming");          //print "high" this is demonstrating that the Arduino is evaluating the RTD temperature as a number and not as a string
     }
   else{                                           //if the RTD temperature is less than or equal to 24.999 C
-    digitalWrite(RELAY, HIGH);
+    digitalWrite(RELAY, LOW);
     digitalWrite(LED, LOW);
     Serial.println((String)": Pump is OFF");          //print "high" this is demonstrating that the Arduino is evaluating the RTD temperature as a number and not as a string
     }

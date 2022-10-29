@@ -63,12 +63,12 @@ void loop() {                                         //here we go...
       Serial.print(sensorstring);                     //send that string to the PC's serial monitor
       
       if (temperature >= 27.0) {                      //if the RTD temperature is greater than or equal to 25 C
-        digitalWrite(RELAY, LOW);
+        digitalWrite(RELAY, HIGH);
         digitalWrite(LED, HIGH);          
         Serial.println((String)": Pump is ON, cold water is coming");          //print "high" this is demonstrating that the Arduino is evaluating the RTD temperature as a number and not as a string
       }
       else{                                           //if the RTD temperature is less than or equal to 24.999 C
-        digitalWrite(RELAY, HIGH);
+        digitalWrite(RELAY, LOW);
         digitalWrite(LED, LOW);
         Serial.println((String)": Pump is OFF");          //print "high" this is demonstrating that the Arduino is evaluating the RTD temperature as a number and not as a string
       }
